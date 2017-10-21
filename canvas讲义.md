@@ -1,4 +1,4 @@
-#神奇的canvas--传智播客前端学院
+#神奇的canvas
 
 # 一、canvas简介
 
