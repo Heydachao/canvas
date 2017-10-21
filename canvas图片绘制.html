@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas圆形绘制</title>
+	</head>
+	
+	<body>
+		<div id="container" style="margin: 100px 200px;">
+			<canvas id="cavsElem">浏览器不支持canvas，请升级</canvas>
+		</div>
+		
+		<script type="text/javascript">
+			(function(){
+				
+				var canvas = document.querySelector("#cavsElem");
+				var ctx = canvas.getContext('2d');
+				
+				canvas.width = 600;
+				canvas.height = 600;
+				canvas.style.border = '1px solid #ccc';
+												
+//				ctx.moveTo(300,300);
+//				ctx.fillStyle = 'red';
+//				ctx.arc(300,300,100,-90 * Math.PI / 180,-30 * Math.PI / 180);
+//				
+//				ctx.closePath();
+//				ctx.fillStyle = 'red';
+//				ctx.fill();
+//				ctx.stroke();
+				
+				var data = [{
+					'value': .2,
+					'color': 'red',
+					'title': '应届生'
+				},{
+					'value': .1,
+					'color': 'blue',
+					'title': '社会招生'
+				},{
+					'value': .2,
+					'color': 'yellow',
+					'title': '老学员'
+				},{
+					'value': .2,
+					'color': 'orange',
+					'title': '公开课'
+				},{
+					'value': .1,
+					'color': 'gray',
+					'title': '公开课'
+				},{
+					'value': .2,
+					'color': 'skyblue',
+					'title': '公开课'
+				}];
+				
+				var tempAngle = -90;
+				var x0 = 300, y0 = 300;
+				var radius = 200;
+				
+				for( var i = 0; i < data.length; i++ ){
+					ctx.beginPath();
+					ctx.moveTo(x0,y0);
+					
+					var angle = data[i].value * 360;
+					ctx.fillStyle = data[i].color;
+					
+					var startAngle = tempAngle * Math.PI / 180;
+					var endAngle = (tempAngle + angle) * Math.PI / 180;				
+					
+					ctx.arc(x0, y0, radius, startAngle, endAngle);
+					
+					var txt = data[i].value * 100 + '%';
+					var x, y;
+					var txtAngle = tempAngle + 1/2 * angle;
+					x = x0 + Math.cos(txtAngle * Math.PI / 180) * (radius + 20);
+					y = y0 + Math.sin(txtAngle * Math.PI / 180) * (radius + 20);
+					
+					if(txtAngle > 90 && txtAngle < 270){
+						ctx.textAlign = 'end';	
+					}
+					
+					ctx.fillText(txt,x,y);
+					
+					ctx.fill();
+					tempAngle += angle;
+				}
+				
+			}());
+		</script>
+		
+	</body>
+</html>

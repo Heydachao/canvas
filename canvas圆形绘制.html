@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas图片绘制</title>
+	</head>
+	
+	<body>
+		<div id="container" style="margin: 100px 200px;">
+			<canvas id="cavsElem">浏览器不支持canvas，请升级</canvas>
+		</div>
+		
+		<script type="text/javascript">
+			(function(){
+				
+				var canvas = document.querySelector("#cavsElem");
+				var ctx = canvas.getContext('2d');
+				
+				canvas.width = 600;
+				canvas.height = 600;
+				canvas.style.border = '1px solid #ccc';
+								
+				var img = new Image();
+				img.src = 'a.png';
+				
+				img.onload = function(){
+					
+					var ow = img.width;
+					var oh = img.height;
+					
+//					ctx.drawImage(img,100,100);
+					ctx.drawImage(img, 100, 100, 400, 100 * oh/ow);
+					
+				};
+				
+			}());
+		</script>
+		
+	</body>
+</html>

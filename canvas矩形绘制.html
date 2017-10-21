@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas矩形绘制</title>
+	</head>
+	
+	<body>
+		<div id="container" style="margin: 100px 200px;">
+			<canvas id="cavsElem">浏览器不支持canvas，请升级</canvas>
+		</div>
+		
+		<script type="text/javascript">
+			(function(){
+				
+				var canvas = document.getElementById("cavsElem");
+				var ctx = canvas.getContext('2d');
+				
+				canvas.width = 600;
+				canvas.height = 600;
+				canvas.style.border = '1px solid #ccc';
+				
+				
+				ctx.beginPath();//开启一个新的状态
+				ctx.strokeStyle = 'red';
+				
+//				矩形普通绘制
+				ctx.rect(200,200,300,300);
+				ctx.stroke();
+				
+//				描边绘制
+				ctx.strokeRect(50,50,300,300);
+				
+				//填充绘制
+				ctx.fillRect(100,100,240,230);
+				
+				ctx.clearRect(70,80,140,130);
+				
+				
+			}());
+		</script>
+		
+	</body>
+</html>

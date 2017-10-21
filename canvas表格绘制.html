@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas表格绘制</title>
+	</head>
+	
+	<body>
+		<div id="container" style="margin: 100px 200px;">
+			<canvas id="cavsElem">浏览器不支持canvas，请升级</canvas>
+		</div>
+		
+		<script type="text/javascript">
+			(function(){
+				
+				var canvas = document.getElementById("cavsElem");
+				var ctx = canvas.getContext('2d');
+				
+				canvas.width = 600;
+				canvas.height = 600;
+				canvas.style.border = '1px solid #ccc';
+				
+				var rectH = 10;
+				var rectW = 10;
+				
+				for(var i = 0; i < canvas.width / rectH; i++){
+					
+					ctx.moveTo(0,i*rectH);
+					ctx.lineTo(canvas.width,i*rectH);
+				
+					ctx.moveTo(i * rectW,0);
+					ctx.lineTo(i * rectW,canvas.height);
+					
+				}
+				ctx.strokeStyle = '#999';
+				ctx.stroke();
+				
+				ctx.beginPath();//开启一个新的状态
+				ctx.strokeStyle = '#333';
+				ctx.moveTo(50,300);
+				ctx.lineTo(150,400);
+				ctx.lineTo(250,240);
+				ctx.lineTo(350,320);
+				ctx.lineTo(450,200);
+				ctx.lineTo(550,400);
+				ctx.stroke();
+				
+				ctx.beginPath();
+				ctx.strokeStyle = 'red';
+				ctx.moveTo(30,50);
+				ctx.lineTo(30,500);
+				ctx.lineTo(580,500);
+				
+				ctx.moveTo(20,60);
+				ctx.lineTo(30,50);
+				ctx.lineTo(40,60);
+				
+				ctx.moveTo(570,490);
+				ctx.lineTo(580,500);
+				ctx.lineTo(570,510);
+				
+				ctx.stroke();
+				
+				
+			}());
+		</script>
+		
+	</body>
+</html>
